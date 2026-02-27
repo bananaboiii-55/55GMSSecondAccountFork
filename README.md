@@ -11,6 +11,24 @@ Welcome to 55GMS, a website for unblocked games, apps, and proxies. Our goal is 
 
 Contributing to 55GMS is simple, all you need is to fork this repository and create a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) that we will review and maybe merge.
 
+## Environment
+
+Before starting the server you must provide a PostgreSQL connection
+string.  Copy the example file and adjust the values to match your
+local database:
+
+```bash
+cp EXAMPLE.env .env
+# edit .env and give POSTGRES_URL a valid URI, e.g.
+# POSTGRES_URL=postgresql://user:pass@localhost:5432/55gms_chat
+```
+
+The app uses `dotenv` so the `.env` file is read automatically when you
+run `node .`.
+
+If `POSTGRES_URL` is missing the process will exit with a clear error
+instead of crashing with a generic `validateString` message.
+
 ## Deploying
 
 ### Quick Deployment

@@ -51,23 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-fetch("/assets/json/ads.json")
-  .then((response) => response.json())
-  .then((data) => {
-    if (data.domains.includes(window.location.hostname)) {
-      const adscipterz92 = document.createElement("script");
-      adscipterz92.setAttribute("async", "");
-      adscipterz92.setAttribute(
-        "src",
-        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6700774525685317"
-      );
-      adscipterz92.setAttribute("crossorigin", "anonymous");
-      document.head.append(adscipterz92);
-      script("Injected script 3/3 (Adsense)");
-    } else {
-      console.log("Skipping Adsense Injection for this domain.");
-    }
-  });
+// Ad system disabled - Adsense script loading removed
 
 var panicKey = localStorage.getItem("panicKey") || "`";
 var panicLink = localStorage.getItem("PanicLink") || "https://google.com";

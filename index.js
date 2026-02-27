@@ -60,10 +60,8 @@ try {
   app.use(express.urlencoded({ extended: true, limit: "50mb" }));
   app.use(cors());
 
+  // middleware removed - ad system disabled
   app.use((req, res, next) => {
-    if (path.extname(req.url) === ".js") {
-      res.setHeader("Content-Type", "application/javascript");
-    }
     next();
   });
 
