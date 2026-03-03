@@ -84,7 +84,7 @@ async function displayPopular() {
         <div class="image-container">
           <a href='/misc/media/tv.html?id=${movie.id}'"> 
             <div class="image-container">
-              <img loading="eager" src="${poster}" style="border-radius: 10px">
+              <img loading="eager" src="${poster}" style="border-radius: 10px; opacity: 0.85;">
               <div class="play-button"></div>
               <p class="item-name">${movie.name || movie.title}</p> 
             </div>
@@ -97,7 +97,7 @@ async function displayPopular() {
         <div class="year">${year}</div>
         <a href="/misc/media/movie.html?id=${movie.id}"> 
           <div class="image-container">
-            <img loading="eager" src="${poster}" style="border-radius: 10px">
+            <img loading="eager" src="${poster}" style="border-radius: 10px; opacity: 0.85;">
             <div class="play-button"></div>
             <p class="item-name">${movie.name || movie.title}</p> 
           </div>
@@ -144,7 +144,7 @@ async function displayMovies() {
         <div class="image-container">
           <a href='/misc/media/tv.html?id=${movie.id}'"> 
             <div class="image-container">
-              <img loading="eager" src="${poster}" style="border-radius: 10px">
+              <img loading="eager" src="${poster}" style="border-radius: 10px; opacity: 0.85;">
               <div class="play-button"></div>
               <p class="item-name">${movie.name || movie.title}</p> 
             </div>
@@ -157,7 +157,7 @@ async function displayMovies() {
         <div class="year">${year}</div>
         <a href='/misc/media/movie.html?id=${movie.id}'"> 
           <div class="image-container">
-            <img loading="eager" src="${poster}" style="border-radius: 10px">
+            <img loading="eager" src="${poster}" style="border-radius: 10px; opacity: 0.85;">
             <div class="play-button"></div>
             <p class="item-name">${movie.name || movie.title}</p> 
           </div>
@@ -204,7 +204,7 @@ async function displayTV() {
         <div class="image-container">
           <a href='/misc/media/tv.html?id=${movie.id}'"> 
             <div class="image-container">
-              <img loading="eager" src="${poster}" style="border-radius: 10px">
+              <img loading="eager" src="${poster}" style="border-radius: 10px; opacity: 0.85;">
               <div class="play-button"></div>
               <p class="item-name">${movie.name || movie.title}</p> 
             </div>
@@ -217,7 +217,7 @@ async function displayTV() {
         <div class="year">${year}</div>
         <a href="/misc/media/movie.html?id=${movie.id}"> 
           <div class="image-container">
-            <img loading="eager" src="${poster}" style="border-radius: 10px">
+            <img loading="eager" src="${poster}" style="border-radius: 10px; opacity: 0.85;">
             <div class="play-button"></div>
             <p class="item-name">${movie.name || movie.title}</p> 
           </div>

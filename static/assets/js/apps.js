@@ -10,7 +10,7 @@ window.addEventListener("load", (event) => {
               <a onclick="${
                 game.alert ? `alert('${game.alert}'); ` : ""
               }hire('${game.url}');">
-                  <img loading="eager" src="${game.image}">
+                  <img loading="eager" src="${game.image}" style="opacity: 0.85;">
                   <p class="text">${game.name}</p>
               </a>
             </div>`;

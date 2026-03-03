@@ -35,12 +35,21 @@
         const lnk = brightness > 128 ? '#0033cc' : '#f1a727';
         st.innerHTML = 'body{background-color:' + customColor + '!important;color:' + txt + '!important}a{color:' + lnk + '!important}';
         document.head.appendChild(st);
+      } else if (mode === 'galaxy') {
+        // Galaxy theme will be loaded via galaxy.js
       }
     })();
   </script>
   <script src="/assets/js/script.js?v=14"></script>
+  <script src="/assets/js/theme-updater.js"></script>
+  <script src="/assets/js/galaxy.js" defer></script>
   <script src="/assets/js/font.js" crossorigin="anonymous"></script>
   <meta http-equiv="Cache-Control" content="public, max-age=31536000">
+  <style>
+    html.galaxy #game-container img {
+      opacity: 0.85 !important;
+    }
+  </style>
 </head>
 
 <body>

@@ -32,10 +32,14 @@
           const lnk = brightness > 128 ? '#0033cc' : '#f1a727';
           st.innerHTML = 'body{background-color:' + customColor + '!important;color:' + txt + '!important}a{color:' + lnk + '!important}';
           document.head.appendChild(st);
+        } else if (mode === 'galaxy') {
+          // Galaxy theme will be loaded via galaxy.js
         }
       })();
     </script>
     <script src="/assets/js/script.js?v=14"></script>
+    <script src="/assets/js/theme-updater.js"></script>
+    <script src="/assets/js/galaxy.js" defer></script>
 
     <!-- Fonts (keep Inter as your base UI font) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

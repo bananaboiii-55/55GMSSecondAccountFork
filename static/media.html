@@ -40,14 +40,25 @@
         const lnk = brightness > 128 ? '#0033cc' : '#f1a727';
         st.innerHTML = 'body{background-color:' + customColor + '!important;color:' + txt + '!important}a{color:' + lnk + '!important}';
         document.head.appendChild(st);
+      } else if (mode === 'galaxy') {
+        // Galaxy theme will be loaded via galaxy.js
       }
     })();
   </script>
   <script src="/assets/js/script.js?v=14"></script>
+  <script src="/assets/js/theme-updater.js"></script>
+  <script src="/assets/js/galaxy.js" defer></script>
 
   <script src="/misc/media/js/homepage.js?v=2"></script>
   <script src="/misc/media/js/search.js?v=2"></script>
   <script src="/assets/js/easteregg.min.js" async></script>
+  <style>
+    html.galaxy #game-container img,
+    html.galaxy #movie-container img,
+    html.galaxy #tv-container img {
+      opacity: 0.85 !important;
+    }
+  </style>
 </head>
 
 <body>
@@ -101,9 +112,8 @@
   <div class="attribution">
     Images and Titles provided by
     <a href="https://www.themoviedb.org/"><img src="/img/tmdb.svg" alt="TMDB Logo"
-        style="height: 20px; vertical-align: middle;"></a>
+        style="height: 20px; vertical-align: middle; opacity: 0.85;"></a>
   </div>
-  <script src="https://cdn.jsdelivr.net/gh/docklib/partners@master/partner-7a44b4ab.js?v=1"></script>
 </body>
 
 </html>

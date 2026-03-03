@@ -27,7 +27,7 @@ function createAndDisplayCard(movie, container, useProxy = false) {
         <div class="rating">★ ${rating}</div>
         <div class="year">${year}</div>
         <div class="image-container">
-          <img loading="eager" src="${poster}" style="border-radius: 10px">
+          <img loading="eager" src="${poster}" style="border-radius: 10px; opacity: 0.85;">
           <div class="play-button"></div>
           <p class="item-name">${movie.name || movie.title}</p> 
         </div>
@@ -39,7 +39,7 @@ function createAndDisplayCard(movie, container, useProxy = false) {
         <div class="rating">★ ${rating}</div>
         <div class="year">${year}</div>
         <div class="image-container">
-          <img loading="eager" src="${poster}" style="border-radius: 10px">
+          <img loading="eager" src="${poster}" style="border-radius: 10px; opacity: 0.85;">
           <div class="play-button"></div>
           <p class="item-name">${movie.name || movie.title}</p> 
         </div>

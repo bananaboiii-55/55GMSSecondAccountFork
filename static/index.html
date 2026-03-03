@@ -39,6 +39,8 @@
         const lnk = brightness > 128 ? '#0033cc' : '#f1a727';
         st.innerHTML = 'body{background-color:' + customColor + '!important;color:' + txt + '!important}a{color:' + lnk + '!important}';
         document.head.appendChild(st);
+      } else if (mode === 'galaxy') {
+        // Galaxy theme will be loaded via galaxy.js
       }
     })();
   </script>
@@ -50,6 +52,8 @@
   <meta http-equiv="Cache-control" content="public">
   <meta name="description" content="55GMS - Reds Exploit Corner - Join the discord for links!" />
   <script src="/assets/js/script.js?v=14"></script>
+  <script src="/assets/js/theme-updater.js"></script>
+  <script src="/assets/js/galaxy.js" defer></script>
 
   <script src="/assets/js/easteregg.min.js" async></script>
   <script src="/assets/sj/index.js" defer></script>
@@ -69,7 +73,7 @@
     </div>
   </nav>
   <h1 id="titles">Reds Exploit Corner</h1>
-  <img id="main-image" src="/img/Mainpagephoto.jpg" alt="Evil Meatworm" style="display:none; margin:0 auto; max-width:15%;">
+  <img id="main-image" src="/img/Meatworm.jpg" alt="Evil Meatworm" style="display:none; margin:0 auto; max-width:15%;">
   <h1 id="sub">
     &nbsp;
   </h1>
@@ -100,7 +104,7 @@
   <br>
   <div class="info">
     <a class="infobtn" href='https://discord.gg/xdaJ6Wytsu'><i class="fa-brands fa-discord"></i></a>
-    <a class="infobtn" href="https://github.com/55gms"><i class="fa-brands fa-github"></i></a>
+    <a class="infobtn" href="https://github.com/bananaboiii-54/55GMS"><i class="fa-brands fa-github"></i></a>
   </div>
 
 

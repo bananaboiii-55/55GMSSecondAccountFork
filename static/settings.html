@@ -38,13 +38,17 @@
         const lnk = brightness > 128 ? '#0033cc' : '#f1a727';
         st.innerHTML = 'body{background-color:' + customColor + '!important;color:' + txt + '!important}a{color:' + lnk + '!important}.card{background-color:' + customColor + '!important;color:' + txt + '!important}';
         document.head.appendChild(st);
+      } else if (mode === 'galaxy') {
+        // Galaxy theme will be loaded via galaxy.js
       }
     })();
   </script>
+  <script src="/assets/js/theme-updater.js"></script>
   <script src="/assets/js/settings.js?v=4"></script>
   <script src="/assets/js/font.js" crossorigin="anonymous"></script>
   <script src="/assets/js/easteregg.min.js" async></script>
   <script src="/assets/js/script.js?v=14"></script>
+  <script src="/assets/js/galaxy.js" defer></script>
 
 </head>
 
@@ -88,6 +92,7 @@
               <option value="original">Default (blue)</option>
               <option value="meatworm">Meatworm</option>
               <option value="custom">Custom</option>
+              <option value="galaxy">Galaxy</option>
             </select>
           </div>
           <div id="custom-color-container" style="display: none; margin-top: 8px;">
@@ -160,14 +165,15 @@
           <button class="center-global tab-cloak tabcloak" onclick="saveSave();">Download Save</button>
         </div>
       </div>
-      <div class="card">
-        <div class="container">
+      <div class="card" style="min-height: 280px;">
+        <div class="container" style="padding-bottom: 20px;">
           <div class="title">
             <h4><b>Site Info</b></h4>
           </div>
-          <p id="updated">Last Updated: </p>
-          <p>Version: 3.1.0<br>Join the discord for more unblocked links and support!<br><a
+          <p id="updated">March 3 2026</p>
+          <p>Version: 3.2.0<br>New Galaxy Theme with Glassmorphism Design<br>Join the discord for more unblocked links and support!<br><a
               href="https://discord.gg/vV7mkcPhMy">https://discord.gg/vV7mkcPhMy</a></p>
+          <p style="font-size: 11px; color: rgba(224, 195, 252, 0.3); margin-top: 12px; user-select: none;">✦ improved by y018 ✦</p>
         </div>
       </div>
     </div><br><br>

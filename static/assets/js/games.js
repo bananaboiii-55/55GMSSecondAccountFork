@@ -23,7 +23,7 @@ window.addEventListener("load", (event) => {
               <a onclick="${
                 game.alert ? `alert('${game.alert}'); ` : ""
               }hire('${game.url}');">
-                  <img loading="eager" src="${game.image}"
+                  <img loading="eager" src="${game.image}" style="opacity: 0.85;"
                        onload="handleImageLoad(${totalImages})">
                   <p class="text">${game.name}</p>
               </a>
@@ -34,7 +34,7 @@ window.addEventListener("load", (event) => {
               <a href="${game.url}" rel="noopener noreferrer" ${
                 game.alert ? `onclick="alert('${game.alert}');"` : ""
               }>
-                  <img loading="eager" src="${game.image}"
+                  <img loading="eager" src="${game.image}" style="opacity: 0.85;"
                        onload="handleImageLoad(${totalImages})">
                   <p class="text">${game.name}</p>
               </a>
@@ -51,7 +51,7 @@ window.addEventListener("load", (event) => {
               )}" rel="noopener noreferrer" ${
                 game.alert ? `onclick="alert('${game.alert}');"` : ""
               }>
-                  <img loading="eager" src="${game.image}"
+                  <img loading="eager" src="${game.image}" style="opacity: 0.85;"
                        onload="handleImageLoad(${totalImages})">
                   <p class="text">${game.name}</p>
               </a>

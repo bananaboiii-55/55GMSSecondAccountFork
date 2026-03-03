@@ -34,6 +34,8 @@
           const lnk = brightness > 128 ? '#0033cc' : '#f1a727';
           st.innerHTML = 'body{background-color:' + customColor + '!important;color:' + txt + '!important}a{color:' + lnk + '!important}';
           document.head.appendChild(st);
+        } else if (mode === 'galaxy') {
+          // Galaxy theme will be loaded via galaxy.js
         }
       })();
     </script>
@@ -102,6 +104,7 @@
             }
         }
     </style>
+    <script src="/assets/js/galaxy.js" defer></script>
 </head>
 
 <body>
