@@ -41,7 +41,16 @@
           st.innerHTML = 'body{background-color:' + customColor + '!important;color:' + txt + '!important}a{color:' + lnk + '!important}';
           document.head.appendChild(st);
         } else if (mode === 'galaxy') {
-          // Galaxy theme will be loaded via galaxy.js
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = '/assets/css/galaxy.css';
+          document.head.appendChild(link);
+          document.documentElement.classList.add('galaxy');
+          document.addEventListener('DOMContentLoaded', function() {
+            if (typeof window.galaxyThemeInit === 'function') {
+              window.galaxyThemeInit();
+            }
+          });
         }
       })();
     </script>
