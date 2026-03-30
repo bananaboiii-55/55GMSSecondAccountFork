@@ -17,7 +17,6 @@
     <script src="/assets/js/script.js?v=14"></script>
 
     <script src="/assets/js/easteregg.min.js" async></script>
-    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <style>
@@ -65,19 +64,10 @@
 
         var password = document.getElementById("password").value;
         var user = document.getElementById("user").value;
-        var hcaptcha = document.querySelector('[name="h-captcha-response"]').value;
         if (password == "" || user == "") {
             Swal.fire({
                 icon: "error",
                 text: "Please fill in all the fields",
-            });
-            signupButton.disabled = false;
-            signupLoader.style.display = "none";
-            return;
-        } else if (hcaptcha == "") {
-            Swal.fire({
-                icon: "error",
-                text: "Please complete the captcha",
             });
             signupButton.disabled = false;
             signupLoader.style.display = "none";
@@ -119,7 +109,6 @@
                 body: JSON.stringify({
                     password: password,
                     username: user,
-                    captchaResponse: hcaptcha,
                 }),
             })
             if (response.status == 200) {
@@ -132,15 +121,6 @@
                 });
 
             } else {
-                if (response.status == 400) {
-                    Swal.fire({
-                        icon: "error",
-                        text: "Invalid captcha",
-                    });
-                    signupButton.disabled = false;
-                    signupLoader.style.display = "none";
-                    return;
-                }
                 Swal.fire({
                     icon: "error",
                     text: "Someone already has that username.",
@@ -181,7 +161,6 @@
         <input type="password" id="password" class='form__input' name="password" autocomplete="off"
             placeholder="Password">
         <br><br>
-        <div class="h-captcha" data-sitekey="b53ebcec-4dfc-4536-b52e-a3bcbc1269e8"></div><br>
         <button id="signupButton" onclick="signup()" class="gs">Sign Up</button>
         <img id="signupLoader" src="/assets/404/loading.gif" style="width: 20px; height: 20px; display: none;">
         <br>

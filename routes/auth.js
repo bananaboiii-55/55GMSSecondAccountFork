@@ -2,10 +2,10 @@ import express from "express";
 import axios from "axios";
 const router = express.Router();
 
-router.post("/signUp", async (req, res) => {
-  let { password, username, premium = false, captchaResponse } = req.body;
+router.post("/signup", async (req, res) => {
+  let { password, username, premium = false } = req.body;
 
-  if (!password || !username || !captchaResponse) {
+  if (!password || !username) {
     return res.status(400).json({ error: "Not enough arguments" });
   }
   if (password.length < 6) {
@@ -16,24 +16,6 @@ router.post("/signUp", async (req, res) => {
   }
 
   try {
-    const captchaVerifyResponse = await axios.post(
-      "https://hcaptcha.com/siteverify",
-      new URLSearchParams({
-        secret: process.env.hcaptchaSecret,
-        response: captchaResponse,
-      }),
-      {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      }
-    );
-
-    if (!captchaVerifyResponse.data.success) {
-      console.log(captchaVerifyResponse.data["error-codes"]);
-      return res.status(400).json({ error: "Invalid CAPTCHA" });
-    }
-
     const response = await axios.post(
       "https://db.55gms.com/api/signup",
       {
