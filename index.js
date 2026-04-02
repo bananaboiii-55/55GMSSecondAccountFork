@@ -324,7 +324,23 @@ try {
     }
   }, 60000);
 
-  app.use(express.static(path.join(__dirname, "static")));
+  app.use(
+    express.static(path.join(__dirname, "static"), {
+      setHeaders: (res, filePath) => {
+        if (filePath.endsWith(".br")) {
+          res.setHeader("Content-Encoding", "br");
+          res.setHeader("Vary", "Accept-Encoding");
+          if (filePath.endsWith(".wasm.br")) {
+            res.type("application/wasm");
+          } else if (filePath.endsWith(".js.br") || filePath.endsWith(".framework.js.br")) {
+            res.type("application/javascript");
+          } else if (filePath.endsWith(".data.br")) {
+            res.type("application/octet-stream");
+          }
+        }
+      },
+    })
+  );
   app.use((req, res, next) => {
     if (req.method === "GET" && !path.extname(req.url)) {
       const filePath = path.join(__dirname, "static", req.url + ".html");
@@ -380,9 +396,13 @@ try {
     }
   });
 
+  const listenPort = Number(process.env.PORT) || 8080;
+  const listenHost = process.env.HOST || "0.0.0.0";
+
   server.on("listening", () => {
     console.log(`\n------------------------------------`);
-    console.log(`🔗 URL: http://localhost:${process.env.PORT}`);
+    console.log(`🔗 URL: http://localhost:${listenPort}`);
+    console.log(`🔌 Bound to: ${listenHost}:${listenPort}`);
     console.log(`------------------------------------\n`);
   });
 
@@ -401,7 +421,8 @@ try {
   process.on("SIGINT", () => shutdown("SIGINT"));
 
   server.listen({
-    port: process.env.PORT || 8080,
+    host: listenHost,
+    port: listenPort,
   });
 
   server.on("error", (error) => {

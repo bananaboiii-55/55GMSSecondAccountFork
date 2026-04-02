@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+    <script src="/assets/js/font.js"></script>
+    <meta name="google" content="notranslate" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/nav.css?v=3" />
+    <title>Google</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Rednotsus" />
+    <meta http-equiv="Cache-control" content="public">
+    <meta charset="utf-8">
+
+
+    <link rel="stylesheet" href="/assets/css/gameframe.css?v=4" />
+    <script src="/assets/js/script.js?v=14"></script>
+
+<script src="/assets/js/theme-updater.js"></script>
+    <style>
+        .cheatbtn {
+            cursor: pointer;
+            margin-left: 1vw;
+            color: #ffffff;
+            background: #1a3a7b;
+            border: 1px solid #68b7ff;
+            padding: 0.6vw 1vw;
+            border-radius: 0.35vw;
+            font-size: 1vw;
+            min-width: 6vw;
+            text-align: center;
+            box-shadow: inset 0 -0.15vw 0 rgba(0, 0, 0, 0.2);
+        }
+        .cheatbtn:hover {
+            background: #27539f;
+        }
+        .cheat-panel {
+            font-family: ui-sans-serif, system-ui, sans-serif;
+            background: #0f1741;
+            border: 1px solid #3d72f0;
+        }
+        .cheat-panel-header {
+            background: #1d327e;
+            color: #e7f0ff;
+        }
+        .cheat-panel-body input {
+            background: #141d4c;
+            color: #e7f0ff;
+            border: 1px solid #3d72f0;
+        }
+        .cheat-panel-body pre {
+            background: rgba(16, 27, 68, 0.95);
+            color: #d7e6ff;
+        }
+        .cheat-panel-body .cheat-hint {
+            margin: 0 0 10px;
+            font-size: 0.9vw;
+            color: #9db8ff;
+            line-height: 1.4;
+        }
+        #cheatPanel {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            width: 420px;
+            max-width: calc(100vw - 32px);
+            background: rgba(20, 20, 30, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+            z-index: 9999;
+            color: #eee;
+            font-family: ui-sans-serif, system-ui, sans-serif;
+        }
+        .cheat-panel.hidden {
+            display: none;
+        }
+        .cheat-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .cheat-panel-body {
+            padding: 12px;
+        }
+        .cheat-panel-body input {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: #14141d;
+            color: #f5f5f5;
+            margin-bottom: 10px;
+            outline: none;
+        }
+        .cheat-actions {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .small-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #f5f5f5;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        .small-btn:hover {
+            background: rgba(255, 255, 255, 0.14);
+        }
+        .cheat-panel-body pre {
+            max-height: 220px;
+            overflow: auto;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="navbar">
+            <a id="nav-title" href="/">Reds Exploit Corner</a>
+            <a href="/g"><i class="fa-solid fa-gamepad">&nbsp;</i>Games</a>
+            <a href="/a"><i class="fa-solid fa-box-archive">&nbsp;</i>Apps</a>
+            <a href="/-"><i class="fa-solid fa-tv">&nbsp;</i>Media</a>
+            <a href="/s"><i class="fa-solid fa-gears">&nbsp;</i>Settings</a>
+            <a href="/chat"><i class="fa-solid fa-comments">&nbsp;</i></a>
+            <a href="/profile"><i class="fa-solid fa-user"></i></a>
+        </div>
+    </nav>
+
+    <div id="gameframe">
+        <div class="gameDisplay">
+            <div class="game">
+                <iframe id="iframe" src="/misc/retrobowlcollege/"></iframe>
+            </div>
+            <div class="options">
+                <div class="left">
+                    <div class="gametext">
+                        <img src="/misc/retrobowlcollege/img.png" class="gameicon" />
+                        <div class="margin">
+                            <div class="flex">
+                                <h1 class="titletext">Retro Bowl</h1>
+                            </div>
+                            <span class="bytext">By New Star Games</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <i class="fa-solid fa-rotate-right reloadbtn" id="reloadbtn"></i>
+                    <i class="fa-solid fa-expand fullscreenbtn" onclick="fullscreen();"></i>
+                    <button id="cheatToggle" class="game-button cheatbtn" title="Open cheat terminal">Cheat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-addisplay" id="bottomAddisplay">
+        <div class="adcenter">
+            <script type="text/javascript">
+                atOptions = {
+                    'key': 'b3a5490f293f185d1d7b4c6e5a0c1c50',
+                    'format': 'iframe',
+                    'height': 90,
+                    'width': 728,
+                    'params': {}
+                };
+            </script>
+            <script type="text/javascript"
+                src="https://cdn.jsdelivr.net/gh/55gms/55GMS@main/static/misc/misc/misc/b3a5490f293f185d1d7b4c6e5a0c1c50/invoke.js"></script>
+        </div>
+
+
+    </div>
+
+    <script>
+        var elem = document.getElementById("iframe");
+
+        function fullscreen() {
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            } else if (elem.mozRequestFullScreen) {
+                elem.mozRequestFullScreen();
+            } else {
+                location.href = elem.src;
+            }
+        }
+        function reload() {
+            document.getElementById("iframe").src += "";
+        }
+        reloadbtn.onclick = reload;
+
+        const cheatPanel = document.createElement("div");
+        cheatPanel.id = "cheatPanel";
+        cheatPanel.className = "cheat-panel hidden";
+        cheatPanel.innerHTML = `
+            <div class="cheat-panel-header">
+                <span>Retro Bowl Cheat Terminal</span>
+                <button id="cheatClose" class="small-btn">×</button>
+            </div>
+            <div class="cheat-panel-body">
+                <p class="cheat-hint">Run JavaScript commands in the game iframe. Try <code>localStorage.getItem('save')</code> or <code>storage.list</code>.</p>
+                <input id="cheatInput" type="text" placeholder="Enter JS command, e.g. document.querySelector('canvas')" />
+                <div class="cheat-actions">
+                    <button id="cheatRun" class="small-btn">Run</button>
+                    <button id="cheatClear" class="small-btn">Clear</button>
+                </div>
+                <pre id="cheatOutput">Ready.</pre>
+            </div>
+        `;
+        document.body.appendChild(cheatPanel);
+
+        const cheatToggle = document.getElementById("cheatToggle");
+        const cheatClose = document.getElementById("cheatClose");
+        const cheatRun = document.getElementById("cheatRun");
+        const cheatClear = document.getElementById("cheatClear");
+        const cheatOutput = document.getElementById("cheatOutput");
+        const cheatInput = document.getElementById("cheatInput");
+
+        function showCheatPanel(show) {
+            cheatPanel.classList.toggle("hidden", !show);
+            if (show) {
+                cheatInput.focus();
+            }
+        }
+
+        function formatResult(value) {
+            if (value === undefined) return "undefined";
+            if (value === null) return "null";
+            if (typeof value === "object") {
+                try {
+                    return JSON.stringify(value, null, 2);
+                } catch (e) {
+                    return String(value);
+                }
+            }
+            return String(value);
+        }
+
+        function runCheatCommand() {
+            const command = cheatInput.value.trim();
+            if (!command) {
+                cheatOutput.textContent = "Enter a JavaScript command first.";
+                return;
+            }
+            const iframe = document.getElementById("iframe");
+            if (!iframe || !iframe.contentWindow) {
+                cheatOutput.textContent = "Game iframe is not loaded yet.";
+                return;
+            }
+
+            try {
+                const win = iframe.contentWindow;
+                let result;
+
+                if (command === "help") {
+                    cheatOutput.textContent = "Use JS commands or storage.list, storage.get <key>, storage.set <key> <value>, storage.remove <key>.";
+                    return;
+                }
+
+                if (command === "storage.list") {
+                    result = Object.keys(win.localStorage);
+                } else if (command.startsWith("storage.get ")) {
+                    const key = command.slice(12).trim();
+                    result = win.localStorage.getItem(key);
+                } else if (command.startsWith("storage.set ")) {
+                    const rest = command.slice(12).trim();
+                    const spaceIndex = rest.indexOf(" ");
+                    if (spaceIndex < 0) {
+                        throw new Error("Usage: storage.set <key> <value>");
+                    }
+                    const key = rest.slice(0, spaceIndex);
+                    let value = rest.slice(spaceIndex + 1);
+                    try {
+                        value = JSON.parse(value);
+                    } catch (e) {
+                        // keep as string
+                    }
+                    if (typeof value === "object") {
+                        value = JSON.stringify(value);
+                    }
+                    win.localStorage.setItem(key, value);
+                    result = `Saved ${key}`;
+                } else if (command.startsWith("storage.remove ")) {
+                    const key = command.slice(15).trim();
+                    win.localStorage.removeItem(key);
+                    result = `Removed ${key}`;
+                } else {
+                    result = win.eval(command);
+                }
+                cheatOutput.textContent = formatResult(result);
+            } catch (error) {
+                cheatOutput.textContent = `Error: ${error.message || error}`;
+            }
+        }
+
+        cheatToggle.addEventListener("click", () => showCheatPanel(true));
+        cheatClose.addEventListener("click", () => showCheatPanel(false));
+        cheatRun.addEventListener("click", runCheatCommand);
+        cheatClear.addEventListener("click", () => {
+            cheatOutput.textContent = "Ready.";
+            cheatInput.value = "";
+        });
+        cheatInput.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                runCheatCommand();
+            }
+        });
+        document.addEventListener("keydown", (event) => {
+            if (event.ctrlKey && event.key === "`") {
+                event.preventDefault();
+                showCheatPanel(!cheatPanel.classList.contains("hidden"));
+            }
+        });
+    </script>
+    <div id="adleft">
+        <script type="text/javascript">
+            atOptions = {
+                'key': '9116277e8ea77908b4f2daec2924df67',
+                'format': 'iframe',
+                'height': 600,
+                'width': 160,
+                'params': {}
+            };
+        </script>
+        <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/gh/55gms/55GMS@main/static/misc/misc/misc/9116277e8ea77908b4f2daec2924df67/invoke.js"></script>
+    </div>
+    <div id="adright">
+        <script type="text/javascript">
+            atOptions = {
+                'key': '9116277e8ea77908b4f2daec2924df67',
+                'format': 'iframe',
+                'height': 600,
+                'width': 160,
+                'params': {}
+            };
+        </script>
+        <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/gh/55gms/55GMS@main/static/misc/misc/misc/9116277e8ea77908b4f2daec2924df67/invoke.js"></script>
+    </div>
+</body>
+
+</html>

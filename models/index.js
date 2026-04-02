@@ -4,6 +4,7 @@ import Message from "./Message.js";
 import ChatMember from "./ChatMember.js";
 import Friend from "./Friend.js";
 import UserStatus from "./UserStatus.js";
+import User from "./User.js";
 
 // Define associations
 Chat.hasMany(Message, { foreignKey: "chatId", as: "messages" });
@@ -35,4 +36,5 @@ export {
   Friend,
   UserStatus,
   initDatabase,
+  User,
 };

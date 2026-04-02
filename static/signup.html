@@ -101,7 +101,7 @@
             return;
         }
         try {
-            let response = await fetch("/api/signup", {
+            const response = await fetch("/api/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -110,8 +110,17 @@
                     password: password,
                     username: user,
                 }),
-            })
-            if (response.status == 200) {
+            });
+
+            let responseData = {};
+            let responseText = "";
+            try {
+                responseData = await response.json();
+            } catch (jsonError) {
+                responseText = await response.text();
+            }
+
+            if (response.ok) {
                 Swal.fire({
                     icon: "success",
                     text: "Account created successfully",
@@ -119,15 +128,20 @@
                 }).then(() => {
                     window.location.href = "/login";
                 });
-
-            } else {
-                Swal.fire({
-                    icon: "error",
-                    text: "Someone already has that username.",
-                });
-                signupButton.disabled = false;
-                signupLoader.style.display = "none";
+                return;
             }
+
+            const errorMessage =
+                (responseData && (responseData.error || responseData.message)) ||
+                responseText ||
+                response.statusText ||
+                "An error occurred while creating your account.";
+            Swal.fire({
+                icon: "error",
+                text: errorMessage,
+            });
+            signupButton.disabled = false;
+            signupLoader.style.display = "none";
         } catch (e) {
             Swal.fire({
                 icon: "error",
@@ -135,7 +149,6 @@
             });
             signupButton.disabled = false;
             signupLoader.style.display = "none";
-            return;
         }
     }
 </script>

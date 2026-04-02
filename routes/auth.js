@@ -1,9 +1,16 @@
 import express from "express";
-import axios from "axios";
+import crypto from "crypto";
+import { v4 as uuidv4 } from "uuid";
+import { User } from "../models/index.js";
 const router = express.Router();
 
+const hashPassword = (password, salt) =>
+  crypto.scryptSync(password, salt, 64).toString("hex");
+
+const generateSalt = () => crypto.randomBytes(16).toString("hex");
+
 router.post("/signup", async (req, res) => {
-  let { password, username, premium = false } = req.body;
+  let { password, username } = req.body;
 
   if (!password || !username) {
     return res.status(400).json({ error: "Not enough arguments" });
@@ -16,27 +23,33 @@ router.post("/signup", async (req, res) => {
   }
 
   try {
-    const response = await axios.post(
-      "https://db.55gms.com/api/signup",
-      {
-        username,
-        password,
-        premium,
-      },
-      {
-        headers: {
-          Authorization: process.env.workerAUTH,
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const existingUser = await User.findOne({ where: { username } });
+    if (existingUser) {
+      return res.status(409).json({ error: "Username already taken" });
+    }
 
-    res.status(200).json(response.data);
+    const salt = generateSalt();
+    const passwordHash = hashPassword(password, salt);
+    const uuid = uuidv4();
+
+    const user = await User.create({
+      uuid,
+      username,
+      passwordHash,
+      salt,
+      premium: false,
+    });
+
+    res.status(200).json({
+      uuid: user.uuid,
+      username: user.username,
+      premium: user.premium,
+    });
   } catch (error) {
+    console.error("Signup error:", error);
     res
       .status(500)
       .json({ error: "An error occurred while processing your request." });
-    console.log(error);
   }
 });
 
@@ -48,23 +61,24 @@ router.post("/login", async (req, res) => {
   }
 
   try {
-    const response = await axios.post(
-      "https://db.55gms.com/api/login",
-      {
-        username,
-        password,
-      },
-      {
-        headers: {
-          Authorization: process.env.workerAUTH,
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const user = await User.findOne({ where: { username } });
+    if (!user) {
+      return res.status(401).json({ error: "Invalid username or password" });
+    }
 
-    res.status(200).json(response.data);
+    const passwordHash = hashPassword(password, user.salt);
+    if (passwordHash !== user.passwordHash) {
+      return res.status(401).json({ error: "Invalid username or password" });
+    }
+
+    res.status(200).json({
+      uuid: user.uuid,
+      username: user.username,
+      premium: user.premium,
+    });
   } catch (error) {
-    res.status(500).json({ error: "Invalid Email or password" });
+    console.error("Login error:", error);
+    res.status(500).json({ error: "An error occurred while processing your request." });
   }
 });
 
